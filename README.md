@@ -1,2 +1,3 @@
-# pwa-news
-A Quasar PWA app
+# Quasar App
+
+> WIP

@@ -1,20 +1,24 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { VuexPersistence } from 'vuex-persist'
+import localforage from 'localforage'
 
-// import example from './module-example'
+import auth from './Auth'
 
 Vue.use(Vuex)
 
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation
- */
+const vuexLocal = new VuexPersistence({
+  storage: localforage,
+  key: 'pwa_news_app'
+})
 
-export default function (/* { ssrContext } */) {
+export default function () {
   const Store = new Vuex.Store({
     modules: {
-      // example
+      auth
     },
+
+    plugins: [vuexLocal.plugin],
 
     // enable strict mode (adds overhead!)
     // for dev mode only
